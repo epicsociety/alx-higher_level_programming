@@ -12,10 +12,13 @@ class Square:
             size:size of one side of a square
         '''
 
-        if type(size) is int:
-            if size < 0:
-                raise ValueError("size must be >= 0")
-            else:
-                self.__size = size
+        try:
+            type(size) is int
+        except TypeError:
+            print("size must be an interger")
+        try:
+            size > 0
+        except ValueError:
+            print("size must be >= 0")
         else:
-            raise TypeError("size must be an interger")
+            self.__size = size
