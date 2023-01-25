@@ -1,11 +1,7 @@
 #!/usr/bin/python3
 
 
-def safe_print_list(my_list=[], x=0):
-    """ Prints x elements of a list
-    my_list: list of elements to be printed
-    x: number of elements to be printed
-    """
+def safe_print_list(my_list=[], x=0)
 
     elements_printed = 0
     for i in range(x):
