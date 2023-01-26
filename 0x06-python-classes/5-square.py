@@ -41,7 +41,9 @@ class Square:
         else:
             integer = 0
             while integer < self.__size:
-                print("{}".format("#"), end="")
-                num += 1
-            print()
-            integer += 1
+                num = 0
+                while num < self.__size:
+                    print("{}".format("#"), end="")
+                    num += 1
+                print()
+                integer += 1
