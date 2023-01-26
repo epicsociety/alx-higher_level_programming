@@ -13,15 +13,15 @@ class Square:
                 size: size of a square
                 position: the position
         """
-        self.size = size
-        self.position = position
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):
         """
         get the attributes to be used in the class
         """
-        return self._size
+        return self.__size
 
     @size.setter
     def size(self, value):
@@ -47,7 +47,11 @@ class Square:
         """
         sets the value for position
         """
-        if i in position not in (int, int):
+        if type(value) is not tuple or len(value) != 2:
+            raise TypeError('position must be a tuple of 2 positive integers')
+        elif type(value[0]) is not int or value[0] < 0:
+            raise TypeError('position must be a tuple of 2 positive integers')
+        elif type(value[1]) is not int or value[1] < 0:
             raise TypeError('position must be a tuple of 2 positive integers')
         else:
             return self.__position == value
@@ -65,7 +69,11 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            integer = 0
+            for i in range(self.__position[1]):
+                print()
+            for i in range(self.__size):
+                print(" "*self.__position[0] + "#"*self.__size)
+            """integer = 0
             position1, position2 = self.__position
             for new_line in range(position2):
                 print()
@@ -81,4 +89,4 @@ class Square:
                             print("{}".format("#"), end='')
                             number += 1
                 print()
-                integer += 1
+                integer += 1"""
