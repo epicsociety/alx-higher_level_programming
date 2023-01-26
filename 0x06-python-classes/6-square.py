@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" A class"""
+""" A class """
 
 
 class Square:
@@ -73,7 +73,8 @@ class Square:
                 print()
             for i in range(self.__size):
                 print(" "*self.__position[0] + "#"*self.__size)
-            """integer = 0
+        #print()
+        """integer = 0
             position1, position2 = self.__position
             for new_line in range(position2):
                 print()
