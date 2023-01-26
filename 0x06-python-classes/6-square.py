@@ -1,17 +1,16 @@
 #!/usr/bin/python3
-""" A class """
+""" A class module"""
 
 
 class Square:
-    """
-    defines the class square
-    """
+    """defines the class square """
+
     def __init__(self, size=0, position=(0, 0)):
         """
         initializes the class square
             Args:
-                size: size of a square
-                position: the position
+                size (int): size of a square
+                position (int, int): the position
         """
         self.__size = size
         self.__position = position
@@ -73,21 +72,3 @@ class Square:
                 print()
             for i in range(self.__size):
                 print(" "*self.__position[0] + "#"*self.__size)
-        #print()
-        """integer = 0
-            position1, position2 = self.__position
-            for new_line in range(position2):
-                print()
-                while integer < self.__size:
-
-                    j = 0
-                    while j < position1:
-                        print(" ", end='')  # replaces position with a space
-                        j += 1
-
-                        number = 0
-                        while number < self.__size:
-                            print("{}".format("#"), end='')
-                            number += 1
-                print()
-                integer += 1"""
