@@ -58,8 +58,11 @@ class Rectangle:
 
         return perimeter
 
-    if width == 0 or height == 0:
-        print("{}".format().__str__)
-        for i in range(width):
-            for i in range(height):
-                print("{}".format('#').__str__)
+    def __str__(self):
+        """prints a string representation of the rectangle"""
+        string = ""
+        if self.__width == 0 or self.__height == 0:
+            return string
+        else:
+            return string += "\n".join("#" * self.__width
+                                       for j in range(self.__height))
