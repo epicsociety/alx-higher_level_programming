@@ -60,9 +60,14 @@ class Rectangle:
 
     def __str__(self):
         """prints a string representation of the rectangle"""
-        string = ""
+        rectangle = []
         if self.__width == 0 or self.__height == 0:
-            return string
+            return ""
         else:
-            return string += "\n".join("#" * self.__width
-                                       for j in range(self.__height))
+            for i in range(self.__height):
+                for j in range(self.__height):
+                    rectangle.append("#")
+                if i < self.__height - 1:
+                    rectangle.append("\n")
+            rectangle = "".join(rectangle)
+            return rectangle
