@@ -65,7 +65,7 @@ class Rectangle:
             return ""
         else:
             for i in range(self.__height):
-                for j in range(self.__height):
+                for j in range(self.__width):
                     rectangle.append("#")
                 if i < self.__height - 1:
                     rectangle.append("\n")
