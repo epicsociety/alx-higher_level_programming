@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 """
-module for a function that divides all elements of a matrix.
+module with a function that divides all elements of a matrix.
 """
 
 
 def matrix_divided(matrix, div):
-    """divides matrix"""
+    """divides matrix
+    return new matrix wih elements rounded to two decimal places
+    """
 
     new_matrix = []
 
     if type(div) is not int and type(div) is not float:
         raise TypeError('div must be a number')
-    elif div is 0:
+    if div is 0:
         raise ZeroDivisionError('division by zero')
     if matrix is None or len(matrix) is 0 or len(matrix[0]) is 0:
         raise TypeError('matrix must be a matrix (list of lists) of \
@@ -32,5 +34,4 @@ def matrix_divided(matrix, div):
                 raise TypeError('matrix must be a matrix (list of lists) of \
                 integers/floats')
             new_matrix[x][i] = round(value / div, 2)
-        else:
             return (new_matrix)
