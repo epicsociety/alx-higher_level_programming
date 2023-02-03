@@ -28,6 +28,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([-23.2, -43.9, -69.6, -2.9]), -2.9)
         self.assertEqual(max_integer([23.2, 43.9, -69.6, 2.9]), 43.9)
 
+    def max_at_the_beginning(self):
+        self.assertEqual(max_integer([3.9, 3.8, 2.9, 1.5]), 3.9)
     def test_none(self):
         with self.assertRaises(TypeError):
             max_integer(None)
