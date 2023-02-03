@@ -9,29 +9,27 @@ def matrix_divided(matrix, div):
     return new matrix wih elements rounded to two decimal places
     """
 
-    new_matrix = []
+    len_1 = 0
 
     if type(div) is not int and type(div) is not float:
         raise TypeError('div must be a number')
     if div == 0:
         raise ZeroDivisionError('division by zero')
-    if matrix == None or len(matrix) == 0 or len(matrix[0]) == 0:
+    if type(matrix) is not list:
         raise TypeError('matrix must be a matrix (list of lists) of \
         integers/floats')
 
-    len1 = len(matrix[0])
-
-    for x, y in enumerate(matrix):
-        if type(y) is not list:
+    for block in matrix:
+        if type(block) is not list:
             raise TypeError('matrix must be a matrix (list of lists) of \
             integers/floats')
-        if len(y) != len1:
-            raise TypeError('Each row of the matrix must have the same size')
-        len1 = len(y)
-        new_matrix.append(y[:])
-        for i, value in enumerate(y):
-            if type(value) is not int and type(value) is not float:
+        for element in block:
+            if type(element) is not int and type(element) is not float:
                 raise TypeError('matrix must be a matrix (list of lists) of \
                 integers/floats')
-            new_matrix[x][i] = round(value / div, 2)
-            return (new_matrix)
+
+        if len(block) != len_1 and len_1 != 0:
+            raise TypeError('Each row of the matrix must have the same size')
+        len_1 = len(block)
+
+    return [[round(elem / div, 2) for elem in row] for row in matrix]
