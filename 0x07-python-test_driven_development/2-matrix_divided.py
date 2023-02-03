@@ -13,9 +13,9 @@ def matrix_divided(matrix, div):
 
     if type(div) is not int and type(div) is not float:
         raise TypeError('div must be a number')
-    if div is 0:
+    if div == 0:
         raise ZeroDivisionError('division by zero')
-    if matrix is None or len(matrix) is 0 or len(matrix[0]) is 0:
+    if matrix == None or len(matrix) == 0 or len(matrix[0]) == 0:
         raise TypeError('matrix must be a matrix (list of lists) of \
         integers/floats')
 
