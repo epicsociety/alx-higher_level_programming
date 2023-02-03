@@ -9,6 +9,9 @@ This module contains one function ``def add_integer(a, b=98)`` that adds two int
 Importing the fucntion from the module:
     >>> add_integer = __import__("0-add_integer").add_integer
 
+Checking the function:
+    >>> f = __import__("0-add_integer").add_integer.__doc__
+
 =======
 numbers
 =======
@@ -47,6 +50,11 @@ with long int:
 ::
     >>> add_integer(88888888, 11111112)
     100000000
+
+With multiple values
+::
+    >>> [add_integer(i, i ** 2) for i in range(6)]
+    [0, 2, 6, 12, 20, 30]
 
 ===========
 non-numbers
