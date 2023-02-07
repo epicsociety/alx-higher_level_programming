@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""
+module contains json
+"""
 import json
-"""
-module containes json
-"""
 
 
 def to_json_string(my_obj):

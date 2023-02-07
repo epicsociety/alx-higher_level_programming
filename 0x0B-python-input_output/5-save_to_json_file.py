@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+module contains one object that write an object to text file
+using json
+"""
+
 import json
 
 

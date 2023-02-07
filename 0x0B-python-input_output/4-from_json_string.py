@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import json
 """
 module contains json
 """
+import json
 
 
 def from_json_string(my_str):

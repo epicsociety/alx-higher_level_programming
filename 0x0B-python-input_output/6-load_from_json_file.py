@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+module contains one mthod that creats an object from json file
+"""
 import json
 
 
