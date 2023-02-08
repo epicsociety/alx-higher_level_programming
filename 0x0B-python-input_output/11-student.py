@@ -35,5 +35,8 @@ class Student:
 
         def reload_from_json(self, json):
             """replaces all attrs if the student instance"""
-            for attr, value in json.items():
-                setattr(self, attr, value)
+            for key in json:
+                try:
+                    setattr(self, key, json[key])
+                except FileNotFoundError:
+                    pass
