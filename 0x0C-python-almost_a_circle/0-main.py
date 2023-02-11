@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ 0-main """
-from test_models.test_base import Base
+from models.base import Base
 
 if __name__ == "__main__":
     b1 = Base()
