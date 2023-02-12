@@ -67,7 +67,7 @@ class Rectangle(Base):
     def y(self):
         """getter for y variable"""
         return self.__y
-    
+
     @y.setter
     def y(self, value):
         """setter for y variable"""
@@ -85,12 +85,19 @@ class Rectangle(Base):
     def display(self):
         """displays a rectangle of #"""
 
-        for i in range(self.height):
+        """for i in range(self.height):
             for j in range(self.width):
                 print("{}".format("#"), end="")
-            
-            print()
 
-        def __str__(self):
-            """returns string representation"""
-            return "[Base.Rectangle] ({}) {}/{}-{}/{}".format(self.id, self.x, self.y, self.width, self.height)
+            print()"""
+
+        for i in range(self.x):
+            print("")
+
+        for j in range(self.height):
+            print("{}".format("")* self.y + "{}".format("#") * self.width)
+
+    def __str__(self):
+        """returns string representation"""
+        return ("[Rectangle] ({}) {}/{} - {}/{}".
+                format(self.id, self.x, self.y, self.width, self.height))
