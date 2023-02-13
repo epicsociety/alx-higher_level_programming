@@ -8,7 +8,7 @@ import tkinter
 
 class Base:
     """the definition of the base class"""
-    __nb_objects = 0  #private class attribute
+    __nb_objects = 0  # private class attribute
 
     def __init__(self, id=None):
         """instantiation of the base class"""
@@ -119,12 +119,11 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([key, int(value)] for key, value in d.items()) 
-                                for d in list_dicts]
+                list_dicts = [dict([key, int(value)] for key,
+                                   value in d.items()) for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
-
 
     @staticmethod
     def draw(list_rectangles, list_squares):

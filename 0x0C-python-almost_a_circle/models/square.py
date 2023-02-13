@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """a class Square"""
 
-
 from models.rectangle import Rectangle
+
 
 class Square(Rectangle):
     """class Square that inherits all attributes from class Rectangle"""
@@ -74,6 +74,7 @@ class Square(Rectangle):
                 "x": self.x,
                 "y": self.y,
                 }
+
     def __str__(self):
         """returns string representation of Square"""
         return ("[Square] ({}) {}/{} - {}".
