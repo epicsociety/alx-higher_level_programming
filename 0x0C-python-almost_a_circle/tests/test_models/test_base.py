@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""Unittest for Base class"""
+"""Unittest for Base class
 
+Unittest classes:
+    testBase_instantiation
+"""
 
+import os
 import unittest
-from models import base
 from models.base import Base
 Base = Base
 to_json_string = Base.to_json_string
@@ -13,54 +16,91 @@ load_from_file = Base.load_from_file
 create = Base.create
 
 
-class TestsBase(unittest.TestCase):
-    def test_docs(self):
-        """Tests"""
-        self.assertTrue(len(base.__doc__) > 0)
+class TestBase_instantiation(unittest.TestCase):
+    """unittests for testing instantiation of the Base class."""
 
-    def test_to(self):
-        """Tests"""
-        self.assertTrue(len(to_json_string.__doc__) > 0)
+    def test_no_arg(self):
+        b1 = Base()
+        b2 = Base()
+        self.assertEqual(b1.id, b1.id - 1)
 
-    def test_from(self):
-        """Tests"""
-        self.assertTrue(len(from_json_string.__doc__) > 0)
+    def test_three_bases(self):
+        b1 = Base()
+        b2 = Base()
+        b3 = Base()
+        self.assertEqual(b1.id, b3.id - 2)
 
-    def test_save(self):
-        """Tests"""
-        self.assertTrue(len(save_to_file.__doc__) > 0)
+    def test_None_id(self):
+        b1 = Base(None)
+        b2 = Base(None)
+        self.assertEqual(b1.id, b2.id - 1)
 
-    def test_load(self):
-        """Tests"""
-        self.assertTrue(len(load_from_file.__doc__) > 0)
+    def test_unique_id(self):
+        self.assertEqual(12, Base(12).id)
 
-    def test_create(self):
-        """Tests"""
-        self.assertTrue(len(create.__doc__) > 0)
+    def test_nb_instances_after_unique_id(self):
+        b1 = Base()
+        b2 = Base(12)
+        b3 = Base()
+        self.assertEqual(b1.id, b3.id - 1)
 
-    def test_docs1(self):
-        """Tests"""
-        self.assertTrue(len(base.__doc__) > 0)
+    def test_id_public(self):
+        b = Base(12)
+        b.id = 15
+        self.assertEqual(15, b.id)
 
-    def test_to1(self):
-        """Tests"""
-        self.assertTrue(len(to_json_string.__doc__) > 0)
+    def test_nb_instances_private(self):
+        with self.assertRaises(AttributeError):
+            print(Base(12).__nb__instances)
 
-    def test_from1(self):
-        """Tests"""
-        self.assertTrue(len(from_json_string.__doc__) > 0)
+    def test_str_id(self):
+        self.assertEqual("hello", Base("hello").id)
 
-    def test_save1(self):
-        """Tests"""
-        self.assertTrue(len(save_to_file.__doc__) > 0)
+    def test_float_id(self):
+        self.assertEqual(5.5, Base(5.5).id)
 
-    def test_load1(self):
-        """Tests"""
-        self.assertTrue(len(load_from_file.__doc__) > 0)
+    def test_complex_id(self):
+        self.assertEqual(complex(5), Base(complex(5)).id)
 
-    def test_create1(self):
-        """Tests"""
-        self.assertTrue(len(create.__doc__) > 0)
+    def test_dict_id(self):
+        self.assertEqual({"a": 1, "b": 2}, Base({"a": 1, "b": 2}).id)
+
+    def test_bool_id(self):
+        self.assertEqual(True, Base(True).id)
+
+    def test_list_id(self):
+        self.assertEqual([1, 2, 3], Base([1, 2, 3]).id)
+
+    def test_tuple_id(self):
+        self.assertEqual((1, 2), Base((1, 2)).id)
+
+    def test_set_id(self):
+        self.assertEqual({1, 2, 3}, Base({1, 2, 3}).id)
+
+    def test_frozenset_id(self):
+        self.assertEqual(frozenset({1, 2, 3}), Base(frozenset({1, 2, 3})).id)
+
+    def test_range_id(self):
+        self.assertEqual(range(5), Base(range(5)).id)
+
+    def test_bytes_id(self):
+        self.assertEqual(b'Python', Base(b'Python').id)
+
+    def test_bytearray_id(self):
+        self.assertEqual(bytearray(b'abcefg'), Base(bytearray(b'abcefg')).id)
+
+    def test_memoryview_id(self):
+         self.assertEqual(memoryview(b'abcefg'), Base(memoryview(b'abcefg')).id)
+
+    def test_inf_id(self):
+        self.assertEqual(float('inf'), Base(float('inf')).id)
+
+    def test_NaN_id(self):
+        self.assertNotEqual(float('nan'), Base(float('nan')).id)
+
+    def test_two_args(self):
+        with self.assertRaises(TypeError):
+            Base(1, 2)
 
 if __name__ == '__main__':
     unittest.main()
