@@ -51,9 +51,47 @@ class Test_Base_to_json_string(unittest.TestCase):
         self.assertEqual(Base.to_json_string(None), "[]")
 
         #test with a list of dictionaries
-        list_dictionaries = [{"id": 1}, {"id": 2}]
+        list_dicts = [{"id": 1}, {"id": 2}]
         expected = '[{"id": 1}, {"id": 2}]'
-        self.assertEqual(Base.to_json_string(list_dictionaries), expected)
+        self.assertEqual(Base.to_json_string(list_dicts), expected)
+
+    def test_save_to_file(self):
+        """Testing save_to_file"""
+
+        #testing with an empty lis
+        Base.save_to_file([])
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+        #testing with a list of instances
+        b1 = Base()
+        b2 = Base()
+        b3 = Base()
+        list_instances = [b1, b2, b3]
+        Base.save_to_file(list_instances)
+        with open("Base.json", "r") as f:
+            expected = '[{"id": 1}, {"id": 2}, {"id": 3}]'
+            self.assertEqual(f.read(), expected)
+
+        #testing with None
+        Base.save_to_file(None)
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_from_json_string(self):
+        """testing from_json_string instance"""
+
+        # testing with empty string
+        self.assertEqual(Base.from_json_string(""), [])
+
+        #testing with valid JSON string
+        json_string = '[{"id": 1}, {"id": 2}]'
+        expected = [{"id": 1}, {"id": 2}]
+        self.assertEqual(Base.from_json_string(json_string), expected)
+        
+        #testing with None
+
+        self.assertEqual(Base.from_json_string(None), [])
 
     if __name__ == "__main__":
         unittest.main()

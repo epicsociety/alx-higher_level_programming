@@ -108,7 +108,7 @@ class Base:
     def load_from_file_csv(cls):
         """Return a list of classes instantiated from a CSV file
         Reads from `<cls.__name__>.csv`
-        Returns an empty string if file does not exist
+        Returns an empty string if file does not ese.pyxist
                 or a list of instantiated classes
         """
         filename = cls.__name__ + ".csv"
