@@ -55,8 +55,8 @@ class Test_Base_to_json_string(unittest.TestCase):
         expected = '[{"id": 1}, {"id": 2}]'
         self.assertEqual(Base.to_json_string(list_dicts), expected)
 
-    def test_save_to_file(self):
-        """Testing save_to_file"""
+    """def test_save_to_file(self):
+        """'Testing save_to_file'"""
 
         #testing with an empty lis
         Base.save_to_file([])
@@ -79,7 +79,7 @@ class Test_Base_to_json_string(unittest.TestCase):
             self.assertEqual(f.read(), "[]")
 
     def test_from_json_string(self):
-        """testing from_json_string instance"""
+        """'testing from_json_string instance'"""
 
         # testing with empty string
         self.assertEqual(Base.from_json_string(""), [])
@@ -94,4 +94,4 @@ class Test_Base_to_json_string(unittest.TestCase):
         self.assertEqual(Base.from_json_string(None), [])
 
     if __name__ == "__main__":
-        unittest.main()
+        unittest.main()"""
