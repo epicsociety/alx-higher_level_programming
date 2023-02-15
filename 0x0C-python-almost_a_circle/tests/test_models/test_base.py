@@ -36,5 +36,24 @@ class Test_Base_instantiation(unittest.TestCase):
         b3 = Base()
         self.assertEqual(b1.id, b3.id - 1)
 
+
+class Test_Base_to_json_string(unittest.TestCase):
+    """testing the Base.to_json_string instances"""
+
+    def setUp(self):
+        Base._Base_nb_objects = 0
+
+    def test_to_json_string(self):
+        # Test with an empty string
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+        #test with None
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+        #test with a list of dictionaries
+        list_dictionaries = [{"id": 1}, {"id": 2}]
+        expected = '[{"id": 1}, {"id": 2}]'
+        self.assertEqual(Base.to_json_string(list_dictionaries), expected)
+
     if __name__ == "__main__":
         unittest.main()
