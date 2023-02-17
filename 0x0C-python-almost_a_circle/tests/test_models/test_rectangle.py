@@ -184,43 +184,6 @@ class TestRectangleUpdate(unittest.TestCase):
 		self.assertEqual(r.y, 4)
 
 	# Test for **kwargs start here
-	def test_rectangle_update_kwargs_id(self):
-		"""'Testing kwargs update'"""
-		r = Rectangle(1, 1, 1, 1, 1)
-		r.update(**{'id': 89})
-		self.assertEqual(r.id, 89)
-
-	def test_rectangle_update_kwargs_id_width(self):
-		"""'testing how updating kwargs both width and id work'"""
-		r = Rectangle(1, 1, 1, 1, 1)
-		r.update(**{'id': 89, 'width': 1})
-		self.assertEqual(r.id, 89)
-		self.assertEqual(r.width, 1)
-
-	def test_rectangle_update_kwargs_id_width_height(self):
-		"""'Testing whther kwargs update work with all function'"""
-		r = Rectangle(1, 1, 1, 1, 1)
-		r.update(**{'id': 89, 'width': 1, 'height': 2})
-		self.assertEqual(r.id, 89)
-		self.assertEqual(r.width, 1)
-
-	def test_rectangle_update_kwargs_id_width_height_x(self):
-		"""'Testing update kwargs with 3 args'"""
-		r = Rectangle(1, 1, 1, 1, 1)
-		r.update(**{'id': 89, 'width': 1, 'height': 2, 'x': 3})
-		self.assertEqual(r.id, 89)
-		self.assertEqual(r.width, 1)
-		self.assertEqual(r.height, 2)
-		self.assertEqual(r.x, 3)
-
-	
-	def test_rectangle_update_no_args(self):
-		"""'testing update with no args'"""
-		r = Rectangle(1, 1, 1, 1)
-		r.update()
-		self.assertEqual(r.__str__(), "[Rectangle] (15) 1/1 - 1/1")
-
-	# Simpler tests for **kwargs, less code
 	def test_update_kwargs(self):
 		 r = Rectangle(1, 1, 0, 0, 1)
 		 r.update(**{'id': 2})
