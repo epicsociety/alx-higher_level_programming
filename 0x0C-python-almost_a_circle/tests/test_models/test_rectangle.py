@@ -130,10 +130,11 @@ class TestRectangle_stdout(unittest.TestCase):
 	def test_rectangle_to_dictionary(self):
 		r = Rectangle(2, 3, 4, 5, 6)
 		self.assertEqual(r.to_dictionary(), {'x': 4, 'y': 5, "id": 6, "width": 2, "height": 3})
-# Testing the update method	
+
+# Testing the update method for both *args and **kwargs	
 class TestRectangleUpdate(unittest.TestCase):
 	"""class tests for the update methods of class Rectangle"""
-	def test_rectangle_update(self):             #Test covered here are *args
+	def test_rectangle_update(self):
 		 """tests a normal Rectangle"""
 		 r = Rectangle(1, 1, 1, 1, 1)
 		 r.update(2, 2, 2, 2, 2)
@@ -183,7 +184,7 @@ class TestRectangleUpdate(unittest.TestCase):
 		self.assertEqual(r.x, 3)
 		self.assertEqual(r.y, 4)
 
-	# test for **kwargs start here
+	# Test for **kwargs start here
 	def test_rectangle_update_kwargs_id(self):
 		"""Testing kwargs update"""
 		r = Rectangle(1, 1, 1, 1, 1)
@@ -213,19 +214,14 @@ class TestRectangleUpdate(unittest.TestCase):
 		self.assertEqual(r.height, 2)
 		self.assertEqual(r.x, 3)
 
-	def test_rectangle_update_kwargs_id_width_height_x_y(self):
-		"""testing update with kwargs awith all args"""
-		r = Rectangle(1, 1, 1, 1)
-		r.update(**{'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
-		self.assertEqual(str(r), "[Rectangle] (89) 3/4 - 1/2")
 	
 	def test_rectangle_update_no_args(self):
 		"""testing update with no args"""
 		r = Rectangle(1, 1, 1, 1)
 		r.update()
-		self.assertEqual(str(r), "[Rectangle] (16) 1/1 - 1/1")
+		self.assertEqual(str(r), "[Rectangle] (15) 1/1 - 1/1")
 
-	#Simpler tests for **kwargs, less code
+	# Simpler tests for **kwargs, less code
 	def test_update_kwargs(self):
 		 r = Rectangle(1, 1, 0, 0, 1)
 		 r.update(**{'id': 2})
@@ -238,8 +234,6 @@ class TestRectangleUpdate(unittest.TestCase):
 		 self.assertEqual(r.__str__(), "[Rectangle] (8) 11/0 - 9/10")
 		 r.update(**{'id': 12, 'width': 13, 'height': 14, 'x': 15, 'y': 16})
 		 self.assertEqual(r.__str__(), "[Rectangle] (12) 15/16 - 13/14")
-
-
 
 if __name__ == '__main__':
     unittest.main()
