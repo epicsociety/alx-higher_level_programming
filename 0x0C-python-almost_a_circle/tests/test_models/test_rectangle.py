@@ -185,17 +185,32 @@ class TestRectangleUpdate(unittest.TestCase):
 
 	# Test for **kwargs start here
 	def test_update_kwargs(self):
-		 r = Rectangle(1, 1, 0, 0, 1)
-		 r.update(**{'id': 2})
-		 self.assertEqual(r.__str__(), "[Rectangle] (2) 0/0 - 1/1")
-		 r.update(**{'id': 3, 'width': 4})
-		 self.assertEqual(r.__str__(), "[Rectangle] (3) 0/0 - 4/1")
-		 r.update(**{'id': 5, 'width': 6, 'height': 7})
-		 self.assertEqual(r.__str__(), "[Rectangle] (5) 0/0 - 6/7")
-		 r.update(**{'id': 8, 'width': 9, 'height': 10, 'x': 11})
-		 self.assertEqual(r.__str__(), "[Rectangle] (8) 11/0 - 9/10")
-		 r.update(**{'id': 12, 'width': 13, 'height': 14, 'x': 15, 'y': 16})
-		 self.assertEqual(r.__str__(), "[Rectangle] (12) 15/16 - 13/14")
+		"""this tests whether update *args and **kwargs works"""
+		r = Rectangle(1, 1, 0, 0, 1)
+		r.update(**{'id': 2})
+		self.assertEqual(r.__str__(), "[Rectangle] (2) 0/0 - 1/1")
+		r.update(**{'id': 3, 'width': 4})
+		self.assertEqual(r.__str__(), "[Rectangle] (3) 0/0 - 4/1")
+		r.update(**{'id': 5, 'width': 6, 'height': 7})
+		self.assertEqual(r.__str__(), "[Rectangle] (5) 0/0 - 6/7")
+		r.update(**{'id': 8, 'width': 9, 'height': 10, 'x': 11})
+		self.assertEqual(r.__str__(), "[Rectangle] (8) 11/0 - 9/10")
+		r.update(**{'id': 12, 'width': 13, 'height': 14, 'x': 15, 'y': 16})
+		self.assertEqual(r.__str__(), "[Rectangle] (12) 15/16 - 13/14")
+	
+	# Test for create start here
+	def test_create_kwargs(self):
+		"""This one tests whether create works well with one or more args"""
+		r = Rectangle.create(**{'id': 89})
+		self.assertEqual(r.__str__(), "[Rectangle] (89) 0/0 - 1/1")
+		r = Rectangle.create(**{'id': 89, 'width': 1})
+		self.assertEqual(r.__str__(), "[Rectangle] (89) 0/0 - 1/1")
+		r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2})
+		self.assertEqual(r.__str__(), "[Rectangle] (89) 0/0 - 1/2")
+		r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3})
+		self.assertEqual(r.__str__(), "[Rectangle] (89) 3/0 - 1/2")
+		r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
+		self.assertEqual(r.__str__(), "[Rectangle] (89) 3/4 - 1/2")
 
 if __name__ == '__main__':
     unittest.main()
