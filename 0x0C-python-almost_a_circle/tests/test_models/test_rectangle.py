@@ -2,10 +2,11 @@
 """Unittest for Rectangle class"""
 
 import io
-from models.rectangle import Rectangle
-from unittest.mock import patch
-import unittest
+import os
 import sys
+import unittest
+
+from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
@@ -218,64 +219,41 @@ class TestRectangleUpdate(unittest.TestCase):
         r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
         self.assertEqual(r.__str__(), "[Rectangle] (89) 3/4 - 1/2")
 
+    # Test for save_to_file starts here
+class TestRectangleFiles(unittest.TestCase):
+    """class facilitates testing of save to file and load to file"""
+    def setUp(self):
+        self.r1 = Rectangle(10, 2, 0, 0, 1)
+        self.r2 = Rectangle(2, 10, 0, 0, 2)
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
 
-# Test for save_to_file starts here
+    def tearDown(self):
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
 
-@classmethod
-def setUpClass(cls):
-    """Set up the testing environment."""
-    cls.r = Rectangle(1, 1, 0, 0, 1)
+    def test_save_to_file_none(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
 
-@classmethod
-def tearDownClass(cls):
-    """Remove the test file."""
+    def test_save_to_file_empty_list(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
 
-    try:
-        os.remove("Rectangle.json")
-    except FileNotFoundError:
-        pass
+    def test_save_to_file_single_rectangle(self):
+        Rectangle.save_to_file([self.r1])
+        with open("Rectangle.json", "r") as f:
+            expected_output = '[{"id": 1, "width": 10, "height": 2, "x": 0, "y": 0}]'
+            self.assertEqual(f.read(), expected_output)
 
-
-def test_save_to_file_None(self):
-    """Test if save_to_file() saves an empty list if the input is None."""
-    Rectangle.save_to_file(None)
-    with open("Rectangle.json", "r") as f:
-        self.assertEqual("[]", f.read())
-
-
-def test_save_to_file_empty_list(self):
-    """Test if save_to_file() saves an empty list if the input is an empty list."""
-    Rectangle.save_to_file([])
-    with open("Rectangle.json", "r") as f:
-        self.assertEqual("[]", f.read())
-
-
-def test_save_to_file_one_rectangle(self):
-    """Test if save_to_file() saves a list with one Rectangle."""
-    Rectangle.save_to_file([self.r])
-    with open("Rectangle.json", "r") as f:
-        self.assertEqual(f.read(), f"[{self.r.to_dictionary()}]")
-
-
-def test_load_from_file(self):
-    """Test if load_from_file() correctly loads a list of Rectangles from a file."""
-    # Create a list of Rectangles to save to file
-    rects = [Rectangle(1, 2, 3, 4), Rectangle(5, 6, 7, 8)]
-    Rectangle.save_to_file(rects)
-
-    # Load the Rectangles from the file
-    loaded_rects = Rectangle.load_from_file()
-
-    # Check that the loaded list has the correct number of Rectangles
-    self.assertEqual(len(loaded_rects), len(rects))
-
-    # Check that each Rectangle in the loaded list has the correct attributes
-    for i in range(len(rects)):
-        self.assertEqual(loaded_rects[i].id, rects[i].id)
-        self.assertEqual(loaded_rects[i].width, rects[i].width)
-        self.assertEqual(loaded_rects[i].height, rects[i].height)
-        self.assertEqual(loaded_rects[i].x, rects[i].x)
-        self.assertEqual(loaded_rects[i].y, rects[i].y)
+    def test_load_from_file(self):
+        Rectangle.save_to_file([self.r1, self.r2])
+        rectangles = Rectangle.load_from_file()
+        self.assertEqual(len(rectangles), 2)
+        self.assertEqual(str(rectangles[0]), str(self.r1))
+        self.assertEqual(str(rectangles[1]), str(self.r2))
 
 
 if __name__ == '__main__':
