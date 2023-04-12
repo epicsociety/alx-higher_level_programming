@@ -7,7 +7,7 @@ if (args.length <= 1) {
   console.log(0);
 } else {
   let max = Math.max(...args);
-  let secondMax, i;
+  let secondMax = -Infinity;
   for (i = 0; i < args.length; i++) {
     if (args[i] !== max && args[i] > secondMax) {
       secondMax = args[i];
