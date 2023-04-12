@@ -11,4 +11,14 @@ module.exports = class Rectangle {
       this.height = h;
     }
   }
+
+  print () {
+    for (let i = 0; i < this.height; i++) {
+      let rows = '';
+      for (let j = 0; j < this.width; j++) {
+        rows += 'X';
+      }
+      console.log(rows);
+    }
+  }
 };
