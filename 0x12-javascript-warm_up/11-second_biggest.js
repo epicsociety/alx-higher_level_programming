@@ -10,7 +10,9 @@ if (args.length <= 1) {
   // initialize secondMax to a very small value
   let secondMax = -Infinity;
   for (let i = 0; i < args.length; i++) {
+    let i;
     if (args[i] !== max && args[i] > secondMax) {
+
       secondMax = args[i];
     }
   }
