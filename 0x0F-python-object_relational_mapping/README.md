@@ -38,6 +38,6 @@ cur = conn.cursor()
 ```
 
 
-##The most important thing to note
+## The most important thing to note
 - *sqlalchemy is an SQL toolkit and has the Object-Relational Mapping (ORM) library for Python*
 - *MySQLdb is a python module*
