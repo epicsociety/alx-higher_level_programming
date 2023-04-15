@@ -1,8 +1,10 @@
 # Object-relational mapping
 
 **Everything you need to know is here**
-[link](https://docs.sqlalchemy.org/en/13/orm/tutorial.html)
-[link](https://mysqlclient.readthedocs.io/)
+
+sqlalchemy documentation - [link](https://docs.sqlalchemy.org/en/13/orm/tutorial.html)
+
+MySQLdb’s documentation - [link](https://mysqlclient.readthedocs.io/)
 
 ---
 This is just a tip of the iceberg
@@ -36,6 +38,6 @@ cur = conn.cursor()
 ```
 
 
-##The most import thing to note**
+##The most important thing to note
 - *sqlalchemy is an SQL toolkit and has the Object-Relational Mapping (ORM) library for Python*
 - *MySQLdb is a python module*
