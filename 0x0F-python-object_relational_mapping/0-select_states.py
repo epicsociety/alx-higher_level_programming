@@ -22,7 +22,7 @@ def list_states(database):
         print(row)
 
     cur.close()
-    db.close()
+    database.close()
 
 
 if __name__ == '__main__':
