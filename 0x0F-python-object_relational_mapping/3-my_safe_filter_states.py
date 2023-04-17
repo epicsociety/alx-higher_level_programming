@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''module searches for state inputed by user
+and is safe form SQL injections
+'''
 
 import sys
 import MySQLdb
