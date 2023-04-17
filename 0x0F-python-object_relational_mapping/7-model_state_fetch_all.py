@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-module contain the state class
+module prints state name and id 
 '''
 
 import sys
@@ -20,6 +20,7 @@ if __name__ == "__main__":
         engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                                .format(username, password, database))
 
+        '''creates the necessary database schema based on the model'''
         Base.metadata.create_all(engine)
 
         Session = sessionmaker(bind=engine)
