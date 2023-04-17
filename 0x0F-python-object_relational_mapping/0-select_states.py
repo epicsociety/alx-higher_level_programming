@@ -1,17 +1,29 @@
 #!/usr/bin/python3
+'''module that lists all states from the database'''
 
-import MySQLdb
 import sys
+import MySQLdb
+
+
+def linkdatabase():
+    '''returns the database'''
+    database = MySQLdb.connect(host="localhost", port=3307, user=sys.argv[1],
+                               password=sys.argv[2], db=sys.argv[3])
+    return database
+
+
+def list_states(database):
+    '''executes the query'''
+    cur = database.cursor()
+
+    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+
+    cur.close()
+    db.close()
 
 
 if __name__ == '__main__':
-    username, password, database = sys.argv[1:]
-    db = MySQLdb.connect(host='localhost', port=3306, user=username,
-                         passwd=password, db=database)
-
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
-    for row in cur.fetchall():
-        print(row)
-    cur.close()
-    db.close()
+    list_states(linkdatabase())
