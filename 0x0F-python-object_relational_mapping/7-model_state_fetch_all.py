@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-module prints state name and id 
+module prints state name and id
 '''
 
 import sys
