@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-module contain the State class
+module contain the state class
 '''
 
 
@@ -15,6 +15,6 @@ Base = declarative_base()
 class State(Base):
     '''state class that inherits from Base'''
     __tablename__ = 'states'
-    id = Column(Integer(11), primary_key=True, autoincrement=True,
+    id = Column(Integer, primary_key=True, autoincrement=True,
                 nullable=False)
     name = Column(String(128), nullable=False)
