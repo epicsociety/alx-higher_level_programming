@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-'''module contain the State class'''
+'''
+module contain the State class
+'''
 
 
 from sqlalchemy.ext.declarative import declarative_base
