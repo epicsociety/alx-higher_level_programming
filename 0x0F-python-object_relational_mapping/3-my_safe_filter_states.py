@@ -18,8 +18,8 @@ if __name__ == '__main__':
                                passwd=password, db=database_name)
 
     cur = database.cursor()
-    query = "SELECT * FROM states WHERE name='{:s}' ORDER BY states.id ASC"
-    cur.execute(query.format(state_searched))
+    query = "SELECT * FROM states WHERE name=%s ORDER BY states.id ASC"
+    cur.execute(query, (state_searched,))
     rows = cur.fetchall()
 
     for row in rows:
