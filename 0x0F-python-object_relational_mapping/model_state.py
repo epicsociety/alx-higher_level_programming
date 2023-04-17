@@ -7,6 +7,7 @@ from sqlalchemy import Column, Integer, String
 
 
 Base = declarative_base()
+'''Base class, default and imported'''
 
 
 class State(Base):
