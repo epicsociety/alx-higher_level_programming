@@ -1,4 +1,4 @@
-bject-relational mapping
+# object-relational mapping
 
 **Everything you need to know is here**
 
@@ -16,13 +16,12 @@ from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('sqlite:///example.db')
 Base = declarative_base()
-    Session = sessionmaker(bind=engine)
-    ```
+Session = sessionmaker(bind=engine)
+```
+> The skeleton for mysqldb is as follows
 
-    > The skeleton for mysqldb is as follows
-
-    ```
-    import MySQLdb
+```
+import MySQLdb
 
     '''Connect to the database'''
     conn = MySQLdb.connect(host='localhost', user='myuser', passwd='mypassword', db='mydatabase')
@@ -35,7 +34,7 @@ Base = declarative_base()
 
       '''Fetch the results'''
         rows = cur.fetchall()
-    ```
+```
 
 
 ## The most important thing to note
