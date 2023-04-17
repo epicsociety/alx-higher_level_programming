@@ -1,4 +1,4 @@
-bject-relational mapping
+# object-relational mapping
 
 **Everything you need to know is here**
 
