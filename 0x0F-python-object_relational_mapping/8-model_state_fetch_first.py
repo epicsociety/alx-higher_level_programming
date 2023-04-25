@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script prints the first state id's and name"""
+""" script prints the first state id's and name """
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
