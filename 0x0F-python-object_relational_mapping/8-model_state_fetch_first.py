@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 
- """ db_flavor+db_connection://user:password@localhost/db_name """
+""" db_flavor+db_connection://user:password@localhost/db_name """
 
 user, password, db_name = sys.argv[1:]
 
