@@ -1,46 +1,48 @@
+# Some quick examples of how to use curl for in reallife
+## To understand the options used in the files in this directory: ```man curl```
 **Get the main page from a web-server:**
 > curl https://www.example.com/
 
 **Get a README file from an FTP server:**
 > curl ftp://ftp.funet.fi/README
 
-Get a web page from a server using port 8000:
+**Get a web page from a server using port 8000:**
+> curl http://www.weirdserver.com:8000/
 
-curl http://www.weirdserver.com:8000/
-Get a directory listing of an FTP site:
+**Get a directory listing of an FTP site:**
+> curl ftp://ftp.funet.fi
 
-curl ftp://ftp.funet.fi
-Get the definition of curl from a dictionary:
+**Get the definition of curl from a dictionary:**
+> curl dict://dict.org/m:curl
 
-curl dict://dict.org/m:curl
-Fetch two documents at once:
+**Fetch two documents at once:**
+> curl ftp://ftp.funet.fi/ http://www.weirdserver.com:8000/
 
-curl ftp://ftp.funet.fi/ http://www.weirdserver.com:8000/
-Get a file off an FTPS server:
+**Get a file off an FTPS server:**
+> curl ftps://files.are.secure.com/secrets.txt
 
-curl ftps://files.are.secure.com/secrets.txt
 or use the more appropriate FTPS way to get the same file:
+> curl --ftp-ssl ftp://files.are.secure.com/secrets.txt
 
-curl --ftp-ssl ftp://files.are.secure.com/secrets.txt
-Get a file from an SSH server using SFTP:
+**Get a file from an SSH server using SFTP:**
+> curl -u username sftp://example.com/etc/issue
 
-curl -u username sftp://example.com/etc/issue
-Get a file from an SSH server using SCP using a private key (not
-        password-protected) to authenticate:
+**Get a file from an SSH server using SCP using a private key (not
+        password-protected) to authenticate:**
+> curl -u username: --key ~/.ssh/id_rsa scp://example.com/~/file.txt
 
-curl -u username: --key ~/.ssh/id_rsa scp://example.com/~/file.txt
-Get a file from an SSH server using SCP using a private key
-(password-protected) to authenticate:
-
-curl -u username: --key ~/.ssh/id_rsa --pass private_key_password
+**Get a file from an SSH server using SCP using a private key
+(password-protected) to authenticate:**
+> curl -u username: --key ~/.ssh/id_rsa --pass private_key_password
 scp://example.com/~/file.txt
-Get the main page from an IPv6 web server:
 
-curl "http://[2001:1890:1112:1::20]/"
-Get a file from an SMB server:
+**Get the main page from an IPv6 web server:**
+> curl "http://[2001:1890:1112:1::20]/"
 
-curl -u "domain\username:passwd" smb://server.example.com/share/file.txt
-Download to a File
+**Get a file from an SMB server:**
+> curl -u "domain\username:passwd" smb://server.example.com/share/file.txt
+
+**Download to a File
 Get a web page and store in a local file with a specific name:
 
 curl -o thatpage.html http://www.example.com/
