@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""sends a request to the URL passed and dispays the value of the 
+"""sends a request to the URL passed and dispays the value of the
 X-request-Id variable found in the header of the response
 """
 if __name__ == "__main__":
