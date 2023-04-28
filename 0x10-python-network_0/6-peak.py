@@ -3,18 +3,15 @@
 
 
 def find_peak(list_of_integers):
-    """ Use algorithm to find the peak"""
+    """ Use loop instead of recursion to find the peak"""
     someList = list_of_integers
-    n = len(someList)
-    if n == 1:
-        return someList[0]
-    elif n == 2:
-        return max(someList)
-    else:
-        mid_index = n // 2
-        if someList[mid_index] < someList[mid_index-1]:
-            return find_peak(someList[:mid_index])  # from the first to mid
-        elif someList[mid_index] < someList[mid_index+1]:
-            return find_peak[someList[mid_index+1:]]  # from mid to the last
+    if len(someList) == 0:
+        return None
+    left, right = 0, len(someList) - 1
+    while left < right:
+        mid = (left + right) // 2
+        if someList[mid] < someList[mid+1]:
+            left = mid + 1
         else:
-            return someList[mid_index]
+            right = mid
+    return someList[left]
