@@ -1,7 +1,7 @@
-** Get the main page from a web-server: **
+**Get the main page from a web-server:**
 > curl https://www.example.com/
 
-** Get a README file from an FTP server: **
+**Get a README file from an FTP server:**
 > curl ftp://ftp.funet.fi/README
 
 Get a web page from a server using port 8000:
