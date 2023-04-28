@@ -1,4 +1,4 @@
-# Some quick examples of how to use curl for in reallife
+# Some quick examples of how to use curl
 ## To understand the options used in the files in this directory: ```man curl```
 **Get the main page from a web-server:**
 > curl https://www.example.com/
