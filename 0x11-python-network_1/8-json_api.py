@@ -19,8 +19,8 @@ if __name__ == '__main__':
 
     if resp == 'application/json':
         result = response.json()
-        _id = result.get('id')
-        name = result.get('name')
+        _id = result.request.get('id')
+        name = result.request.get('name')
         if (result != {} and _id and name):
             print("[{}] {}".format(_id, name))
         else:
