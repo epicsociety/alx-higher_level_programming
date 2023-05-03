@@ -11,7 +11,8 @@ if __name__ == '__main__':
     owner_name = sys.argv[2]
     i = 0
 
-    url = "https://api.github.com/repos/{}/{}/commits".format(owner_name, repository_name)
+    url = "https://api.github.com/repos/{}/{}/commits".
+    format(owner_name, repository_name)
 
     resp = get(url)
     json = resp.json()
@@ -21,5 +22,5 @@ if __name__ == '__main__':
             break
         sha = element.get('sha')
         author = element.get('commit').get('author').get('name')
-        print("{}: {}".format (sha, author))
+        print("{}: {}".format(sha, author))
         i += 1
