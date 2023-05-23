@@ -9,8 +9,8 @@ request.get(url, function (error, response, body) {
     console.error(error);
     return;
   }
-  const charactersUrl = JSON.parse(body).characters;
-  charactersUrl.forEach((character) => {
+  const charactersUrls = JSON.parse(body).characters;
+  charactersUrls.forEach((character) => {
     request.get(character, function (error, response, body) {
       if (error) {
         console.error(error);
