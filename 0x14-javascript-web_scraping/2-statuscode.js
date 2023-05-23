@@ -9,6 +9,6 @@ request.get(url, function (error, response, body) {
     return;
   }
 
-  console.log(response.statusCode);
+  console.log(`code: ${response.statusCode}`);
 }
 );
