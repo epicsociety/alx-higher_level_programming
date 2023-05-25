@@ -3,27 +3,25 @@
 the database hbtn_0e_6_usa"""
 
 import sys
-import sqlalchemy import create_engine()
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-if __name__ == "if __name__ == "__main__":
+if __name__ == "__main__":
 
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
+    username, password, db_name = sys.argv[1:]
 
-    # db_flavor+db_connector://user:password@localhost/database_nameengine
-    engine  = create_engine("mysql+mysqldb)://{}:{}@localhost:3306/{}"\
-            .format(mysql_username, mysql_password, datbase_name))
+    # dialect(flavor)+driver(dbAPI)://username:password@host:port/database
+    engine  = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"\
+            .format(username, password, db_name), pool_pre_ping=True)
 
-            Session = sessionmaker(bind=engine)
-            session = Session()
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-            display = session.query("states").order_by(state.id).first()
+    states = session.query(State).order_by(State.id).all()
 
+    for state in states:
+        if 'a' in state.name.lower():
+            print("{}: {}".format(state.id, state.name))
 
-            for i in display:
-
-                print("{}:{}":display[0], display[1])
-
-                session.close()
+    session.close()
