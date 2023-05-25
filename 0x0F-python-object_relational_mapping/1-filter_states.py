@@ -17,7 +17,8 @@ def list_states(database):
     cur = database.cursor()
 
     cur.execute(
-            "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id ASC")
+            "SELECT * FROM states WHERE name COLLATE utf8mb4_bin LIKE 'N%'\
+                    ORDER BY states.id ASC")
     rows = cur.fetchall()
     for row in rows:
         print(row)
