@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" module has script that lists all State objects that contain the letter a from
-the database hbtn_0e_6_usa"""
+""" module has script that lists all State objects that
+contain the letter a from the database hbtn_0e_6_usa """
 
 import sys
 from sqlalchemy import create_engine
@@ -12,8 +12,9 @@ if __name__ == "__main__":
     username, password, db_name = sys.argv[1:]
 
     # dialect(flavor)+driver(dbAPI)://username:password@host:port/database
-    engine  = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"\
-            .format(username, password, db_name), pool_pre_ping=True)
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
+                           .format(username, password, db_name),
+                           pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
