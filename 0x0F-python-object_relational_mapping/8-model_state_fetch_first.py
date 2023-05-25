@@ -6,23 +6,24 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 import sys
 
-""" db_flavor+db_connection://user:password@localhost/db_name """
 
-user, password, db_name = sys.argv[1:]
+if __name__ == '__main__':
 
-engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
-                       .format(user, password, db_name),
-                       pool_pre_ping=True)
+    user, password, db_name = sys.argv[1:]
 
-Session = sessionmaker(bind=engine)
-session = Session()
+    # dialect(flavor)+driver(dbAPI)://username:password@host:port/database
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
+                           .format(user, password, db_name),
+                           pool_pre_ping=True)
 
-first_state = session.query(State).order_by(State.id).first()
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-if first_state:
+    first_state = session.query(State).order_by(State.id).first()
 
-    print("{} {}".format(first_state.id, first_state.name))
-else:
-    print("Nothing")
+    if first_state:
+        print("{} {}".format(first_state.id, first_state.name))
+    else:
+        print("Nothing")
 
-session.close()
+    session.close()
